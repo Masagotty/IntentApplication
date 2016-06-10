@@ -24,9 +24,13 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_CODE_MAIL = 2;
     static final int REQUEST_CODE_CAMERA = 3;
     static final int REQUEST_CODE_GALLERY = 4;
+    static final int REQUEST_CODE_BROWSER = 5;
 
     ImageView imageView;
     EditText editText;
+    EditText to;
+    EditText sub;
+    EditText content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         imageView = (ImageView)findViewById(R.id.imageView);
         editText = (EditText)findViewById(R.id.editText);
         editText.setText("東京都港区南麻布2-12-3");
+        to = (EditText)findViewById(R.id.to);
+        sub = (EditText)findViewById(R.id.sub);
+        content = (EditText)findViewById(R.id.content);
 
     }
 
@@ -46,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gallery (View v) {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        android.provider..MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        Intent intent = new Intent(Intent.ACTION_PICK,
+        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_CODE_GALLERY);
     }
 
     public void mail (View v) {
-        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:life.is.tech@gmail.com"));
-        intent.putExtra(Intent.EXTRA_SUBJECT, "無題");
-        intent.putExtra(Intent.EXTRA_PROCESS_TEXT_READONLY, "本文");
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + to.getText().toString()));
+        intent.putExtra(Intent.EXTRA_SUBJECT, sub.getText().toString());
+        intent.putExtra(Intent.EXTRA_TEXT, content.getText().toString());
         startActivityForResult(intent, REQUEST_CODE_MAIL);
     }
 
@@ -67,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
     public void camera (View v) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, REQUEST_CODE_CAMERA);
+    }
+
+    public void browser (View v) {
+        Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("https://life-is-tech.com"));
+        startActivityForResult(intent, REQUEST_CODE_BROWSER);
     }
 
     @Override
@@ -89,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-            } else if {
+            } else if (requestCode == REQUEST_CODE_CAMERA){
 
                 Bitmap bmp = (Bitmap) intent.getExtras().get("data");
                 imageView.setImageBitmap(bmp);

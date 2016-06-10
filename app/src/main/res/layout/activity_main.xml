@@ -14,50 +14,96 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:id="@+id/editText" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="地図"
-            android:id="@+id/button"
-            android:onClick="map" />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:id="@+id/editText"
+                android:layout_weight="4" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="画像"
-            android:id="@+id/button2"
-            android:onClick="gallery" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="地図"
+                android:id="@+id/button"
+                android:onClick="map"
+                android:layout_weight="1" />
+        </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="メール"
-            android:id="@+id/button3"
-            android:onClick="mail" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="アプリ"
-            android:id="@+id/button4"
-            android:onClick="app" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/to"
+                android:hint="宛先" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="カメラ"
-            android:id="@+id/button5"
-            android:onClick="camera" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sub"
+                android:hint="件名" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/content"
+                android:hint="本文" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="メール"
+                android:id="@+id/button3"
+                android:onClick="mail" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="アプリ"
+                android:id="@+id/button4"
+                android:onClick="app" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="画像"
+                android:id="@+id/button2"
+                android:onClick="gallery" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="カメラ"
+                android:id="@+id/button5"
+                android:onClick="camera" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LiT!"
+                android:id="@+id/button6"
+                android:onClick="browser" />
+        </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/imageView"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
+
     </LinearLayout>
 </RelativeLayout>
